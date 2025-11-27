@@ -1,7 +1,4 @@
-@use "fonts";
-@use "breakpoint";
-@use "reset";
-@use "colors";
+@use "colors" as *;
 
 html {
 	scroll-behavior: smooth;
@@ -13,3 +10,45 @@ body {
     width: 100%;
     height: 100%;
 }
+
+:root {
+    // -----------------------------------------------------
+    // NEUTRAL COLORS
+    // -----------------------------------------------------
+    --color-white: #{$color-white};
+    --color-black: #{$color-black};
+    --color-snow: #{$color-snow};
+    --color-smoke: #{$color-smoke};
+    --color-coal: #{$color-coal};
+    --color-gray: #{$color-gray};
+    --color-graphene: #{$color-graphene};
+    --color-dark-gray: #{$color-dark-gray};
+    --color-titan-white: #{$color-titan-white};
+  
+    --color-coal-60: #{$color-coal-60};
+    --color-black-80: #{$color-black-80};
+    --color-gray-40: #{$color-gray-40};
+    --color-white-90: #{$color-white-90};
+    --color-white-20: #{$color-white-20};
+    --color-smoke-50: #{$color-smoke-50};
+    --color-smoke-30: #{$color-smoke-30};
+    --color-smoke-16: #{$color-smoke-16};
+  
+    // -----------------------------------------------------
+    // BRAND COLORS
+    // -----------------------------------------------------
+    --color-primary: #{$color-primary};
+    --color-secondary: #{$color-secondary};
+    --color-dark-primary: #{$color-dark-primary};
+    --color-dark-secondary: #{$color-dark-secondary};
+  
+    --color-primary-10: #{$color-primary-10};
+    --color-secondary-10: #{$color-secondary-10};
+  
+    // -----------------------------------------------------
+    // FEEDBACK COLORS 
+    // -----------------------------------------------------
+    --color-success: #{$color-success};
+    --color-warning: #{$color-warning};
+    --color-error: #{$color-error};
+  }

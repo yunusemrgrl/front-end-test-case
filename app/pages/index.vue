@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>Welcome to the Home Page</h1>
+    <h1>The new 2021 collection</h1>
   </div>
 </template>
