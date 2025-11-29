@@ -1,0 +1,27 @@
+$ff-primary: 'Roboto';
+$ff-secondary: 'Rubik';
+
+$text-2xs: 10px;
+$text-xs: 12px;
+$text-sm: 14px;
+$text-base: 16px;
+$text-lg: 20px;
+$text-xl: 24px;
+$text-2xl: 34px;
+$text-3xl: 48px;
+
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+body {
+    font-family: $ff-primary;
+}
+
+h1, h2 {
+    font-family: $ff-secondary;
+}
+
+h3, h4, h5, h6 {
+    font-family: $ff-primary;
+}
