@@ -8,6 +8,7 @@
 <script>
 
 export default {
+    name: 'SearchIcon',
     props: {
         width: {
             type: [Number, String],
@@ -19,7 +20,7 @@ export default {
         },
         color: {
             type: [String],
-            default: undefined
+            default: 'currentColor'
         },
         fillOpacity: {
             type: [Number, String],
@@ -31,6 +32,6 @@ export default {
 
 <style lang="scss" scoped>
 svg path:not([fill]) {
-    fill: $color-primary;
+    fill: $color-gray-40;
 }
 </style>

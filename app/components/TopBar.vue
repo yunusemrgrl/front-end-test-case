@@ -35,23 +35,16 @@
                             :count="2" />
                     </div>
 
-                    <HamburgerMenuIcon class="top-bar__hamburger-menu-icon mobile-only" :width="32" :height="32" />
+                    <HamburgerMenuIcon class="top-bar__hamburger-menu-icon mobile-only" :width="32" :height="32"
+                        @click="showMobileMenu = true" />
                 </div>
             </div>
 
-            <nav class="top-bar__nav desktop-only">
-                <ul class="top-bar__nav-list">
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Campaigns</a></li>
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Personal Care</a></li>
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Skin Care</a></li>
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Make - Up</a></li>
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Mother &amp; Baby</a></li>
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Men Care</a></li>
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Healthy Life</a></li>
-                    <li class="top-bar__nav-item"><a href="#" role="heading" aria-level="6">Brands</a></li>
-                </ul>
-            </nav>
+            <TopNav />
 
+            <transition name="mobile-menu">
+                <MobileMenu v-if="showMobileMenu" @close="showMobileMenu = false" @select="onMobileSelect" />
+            </transition>
         </div>
     </div>
 </template>
@@ -62,8 +55,10 @@ import SearchIcon from "./icons/SearchIcon.vue";
 import ChevronIcon from "./icons/ChevronIcon.vue"
 import ClearIcon from "./icons/ClearIcon.vue";
 import HamburgerMenuIcon from "./icons/HamburgerMenuIcon.vue";
-import ShoppingIndicator from "./icons/ShoppingIndicator.vue";
-import { Divider, Avatar } from "./ui";
+import { Divider, Avatar, ShoppingIndicator } from "./ui";
+
+import TopNav from './TopNav.vue'
+import MobileMenu from './MobileMenu.vue'
 
 export default {
     data() {
@@ -71,6 +66,7 @@ export default {
             logo: '/images/logo.svg',
             isFocused: false,
             inputValue: '',
+            showMobileMenu: false,
         }
     },
     components: {
@@ -81,7 +77,13 @@ export default {
         ShoppingIndicator,
         HamburgerMenuIcon,
         Divider,
-        Avatar
+        Avatar,
+        TopNav,
+        MobileMenu
+    },
+    methods: {
+        onMobileSelect(item) {
+        }
     }
 }
 </script>
@@ -257,32 +259,5 @@ export default {
             }
         }
     }
-}
-
-.top-bar__nav {
-    height: 100%;
-    width: 100%;
-
-    &-list {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    &-item {
-        padding: 16px;
-        font-size: $text-sm;
-        font-weight: $fw-bold;
-        color: $color-coal;
-        text-transform: uppercase;
-        cursor: pointer;
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-    }
-
-
 }
 </style>

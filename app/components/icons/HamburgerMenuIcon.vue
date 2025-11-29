@@ -9,6 +9,7 @@
 <script>
 
 export default {
+    name: 'HamburgerMenuIcon',
     props: {
         width: {
             type: [Number, String],
@@ -20,7 +21,7 @@ export default {
         },
         color: {
             type: [String],
-            default: undefined
+            default: 'currentColor'
         }
     }
 }
