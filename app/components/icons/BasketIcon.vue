@@ -9,6 +9,7 @@
 <script>
 
 export default {
+    name: 'BasketIcon',
     props: {
         width: {
             type: [Number, String],
@@ -20,7 +21,7 @@ export default {
         },
         color: {
             type: [String],
-            default: undefined
+            default: 'currentColor'
         }
     }
 }
@@ -28,6 +29,6 @@ export default {
 
 <style lang="scss" scoped>
 svg path:not([fill]) {
-    fill: $color-primary;
+    fill: $color-graphene;
 }
 </style>
