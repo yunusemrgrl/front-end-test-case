@@ -11,7 +11,8 @@
                     <SearchIcon class="top-bar__search-icon desktop-only" :width="24" :height="24"
                         :color="inputValue ? 'var(--color-graphene)' : 'var(--color-gray-40)'" />
 
-                    <SearchIcon class="top-bar__search-icon mobile-only" :width="24" :height="24" color="var(--color-graphene)"/>
+                    <SearchIcon class="top-bar__search-icon mobile-only" :width="24" :height="24"
+                        color="var(--color-graphene)" />
 
                     <input class="top-bar__search-input desktop-only" type="text"
                         placeholder="Write the product or category you are looking for" v-model="inputValue"
@@ -53,15 +54,10 @@
 </template>
 
 <script>
-import BasketIcon from "./icons/BasketIcon.vue";
-import SearchIcon from "./icons/SearchIcon.vue";
-import ChevronIcon from "./icons/ChevronIcon.vue"
-import ClearIcon from "./icons/ClearIcon.vue";
-import HamburgerMenuIcon from "./icons/HamburgerMenuIcon.vue";
-import { Divider, Avatar, ShoppingIndicator } from "./ui";
-
-import TopNav from './TopNav.vue'
-import MobileMenu from './MobileMenu.vue'
+import { BasketIcon, ChevronIcon, ClearIcon, HamburgerMenuIcon, SearchIcon } from '@/components/icons';
+import { Divider, Avatar, ShoppingIndicator } from '@/components/ui';
+import TopNav from '@/components/TopNav.vue';
+import MobileMenu from '@/components/MobileMenu.vue';
 
 export default {
     data() {

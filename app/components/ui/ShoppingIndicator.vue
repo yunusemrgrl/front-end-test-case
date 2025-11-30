@@ -13,7 +13,7 @@ export default {
         },
         color: {
             type: String,
-            default: undefined
+            default: 'currentColor'
         },
         count: {
             type: [Number, String],

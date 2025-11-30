@@ -1,0 +1,11 @@
+export { default as BasketIcon } from './BasketIcon.vue';
+export { default as ChevronIcon } from './ChevronIcon.vue';
+export { default as ClearIcon } from './ClearIcon.vue';
+export { default as EyeIcon } from './EyeIcon.vue';
+export { default as HamburgerMenuIcon } from './HamburgerMenuIcon.vue';
+export { default as HelpIcon } from './HelpIcon.vue';
+export { default as LogoutIcon } from './LogoutIcon.vue';
+export { default as OrdersIcon } from './OrdersIcon.vue';
+export { default as SearchIcon } from './SearchIcon.vue';
+export { default as ShoppingCartIcon } from './ShoppingCartIcon.vue';
+export { default as UserIcon } from './UserIcon.vue';
