@@ -8,8 +8,11 @@
                 </div>
 
                 <div class="top-bar__search">
-                    <SearchIcon class="top-bar__search-icon" :width="24" :height="24"
+                    <SearchIcon class="top-bar__search-icon desktop-only" :width="24" :height="24"
                         :color="inputValue ? 'var(--color-graphene)' : 'var(--color-gray-40)'" />
+
+                    <SearchIcon class="top-bar__search-icon mobile-only" :width="24" :height="24" color="var(--color-graphene)"/>
+
                     <input class="top-bar__search-input desktop-only" type="text"
                         placeholder="Write the product or category you are looking for" v-model="inputValue"
                         @focus="isFocused = true" @blur="isFocused = false" />
@@ -115,7 +118,7 @@ export default {
         margin-right: 20px;
 
         @include for-mobile {
-            margin-right: auto;
+            margin-right: 16px;
         }
     }
 
@@ -130,7 +133,7 @@ export default {
         transition: all 0.3s ease;
 
         @include for-mobile {
-            margin-left: 0;
+            margin-left: auto;
             width: auto;
         }
 
@@ -184,7 +187,7 @@ export default {
         height: 72px;
         width: 100%;
         margin-left: 24px;
-        gap: 24px;
+        gap: 32px;
 
         @include for-mobile {
             width: auto;
@@ -247,17 +250,8 @@ export default {
     }
 
     &-chevron {
-        transition: all 0.3s ease;
-        border-radius: 50%;
+        color: $color-gray-40;
         cursor: pointer;
-
-        &:hover {
-            background-color: $color-smoke;
-
-            :deep(path) {
-                fill: $color-graphene;
-            }
-        }
     }
 }
 </style>

@@ -32,6 +32,6 @@ export default {
 
 <style lang="scss" scoped>
 svg path:not([fill]) {
-    fill: $color-gray-40;
+    fill: $color-graphene;
 }
 </style>
