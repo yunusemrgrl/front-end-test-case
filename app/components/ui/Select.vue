@@ -99,7 +99,7 @@ export default {
   }
 
   &:focus {
-    border: none;
+    border: 1px solid transparent;
     box-shadow: 0px 0px 0px 2px rgba(214, 236, 255, 1), 0px 0px 0px 1px rgba(108, 142, 239, 1) inset;
   }
 
@@ -107,7 +107,7 @@ export default {
     border-color: $color-error;
 
     &:focus {
-      border: none;
+      border: 1px solid transparent;
       box-shadow: 0px 0px 0px 2px rgba(253, 226, 221, 1), 0px 0px 0px 1px rgba(205, 61, 100, 1) inset;
     }
   }
