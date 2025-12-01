@@ -4,7 +4,9 @@
 
             <div class="top-bar__middle">
                 <div class="top-bar__left">
-                    <img class="top-bar__logo" :src="logo" alt="logo">
+                    <NuxtLink to="/">
+                        <img class="top-bar__logo" :src="logo" alt="logo">
+                    </NuxtLink>
                 </div>
 
                 <div class="top-bar__search">
@@ -32,11 +34,11 @@
 
                     <Divider variant="thin" orientation="vertical" class="top-bar__divider desktop-only" :height="24" />
 
-                    <div class="top-bar__basket">
+                    <div class="top-bar__basket" @click="handleBasketClick">
                         <BasketIcon class="top-bar__basket-icon" :width="23" :height="18"
                             color="var(--color-graphene)" />
-                        <ShoppingIndicator class="top-bar__basket-indicator" :size="16" color="var(--color-error)"
-                            :count="2" />
+                        <ShoppingIndicator v-if="cartItemsCount > 0" class="top-bar__basket-indicator" :size="16" color="var(--color-error)"
+                            :count="cartItemsCount" />
                     </div>
 
                     <HamburgerMenuIcon class="top-bar__hamburger-menu-icon mobile-only" :width="32" :height="32"
@@ -57,17 +59,10 @@
 import { BasketIcon, ChevronIcon, ClearIcon, HamburgerMenuIcon, SearchIcon } from '@/components/icons';
 import { Divider, Avatar, ShoppingIndicator } from '@/components/ui';
 import TopNav from '@/components/TopNav.vue';
-import MobileMenu from '@/components/MobileMenu.vue';
+import MobileMenu from '@/components/mobile-menu/MobileMenu.vue';
+import { useCart } from '@/composables/use-cart';
 
 export default {
-    data() {
-        return {
-            logo: '/images/logo.svg',
-            isFocused: false,
-            inputValue: '',
-            showMobileMenu: false,
-        }
-    },
     components: {
         BasketIcon,
         SearchIcon,
@@ -80,8 +75,28 @@ export default {
         TopNav,
         MobileMenu
     },
+    setup() {
+        const { cartItemsCount } = useCart();
+
+        return {
+            cartItemsCount
+        };
+    },
+    data() {
+        return {
+            logo: '/images/logo.svg',
+            isFocused: false,
+            inputValue: '',
+            showMobileMenu: false,
+        }
+    },
     methods: {
         onMobileSelect(item) {
+        },
+        handleBasketClick() {
+            if (this.cartItemsCount > 0) {
+                this.$router.push('/checkout');
+            }
         }
     }
 }
@@ -203,6 +218,15 @@ export default {
         transition: all 0.3s ease;
         cursor: pointer;
 
+        &-icon {
+            transition: opacity 0.3s ease;
+        }
+
+        &:not(:has(.top-bar__basket-indicator)) {
+            cursor: default;
+            opacity: 0.6;
+        }
+
         &-indicator {
             position: absolute;
             bottom: 12px;
@@ -238,6 +262,7 @@ export default {
         color: $color-coal;
         font-size: $text-sm;
         font-weight: $fw-medium;
+        white-space: nowrap;
         padding-left: 2px;
     }
 

@@ -1,9 +1,8 @@
 <template>
     <article class="product-card">
         <div class="product-card__image-wrapper">
-            <figure class="product-card__image-container">
-                <img :src="imageUrl" :alt="title" class="product-card__image" loading="lazy" />
-            </figure>
+            <Image :src="imageUrl" :use-figure="true" container-class="product-card__image-container"
+                image-class="product-card__image" loading="lazy" />
 
             <div v-if="showOverlay" class="product-card__overlay">
                 <div class="product-card__actions">
@@ -40,61 +39,44 @@
     </article>
 </template>
 
-<script>
+<script setup>
 import { computed } from 'vue';
-import { Button, Divider } from '@/components/ui';
+import { Button, Divider, Image } from '@/components/ui';
 import { EyeIcon, ShoppingCartIcon } from '@/components/icons';
 import { PRODUCT_CARD_TEXTS } from '@/constants/product-card';
 
-export default {
-    name: 'ProductCard',
-    components: {
-        Button,
-        Divider,
-        EyeIcon,
-        ShoppingCartIcon,
+const props = defineProps({
+    product: {
+        type: Object,
+        required: true,
     },
-    props: {
-        product: {
-            type: Object,
-            required: true,
-        },
-        showOverlay: {
-            type: Boolean,
-            default: true,
-        },
-        priceFormat: {
-            type: String,
-            default: 'TL',
-        },
+    showOverlay: {
+        type: Boolean,
+        default: true,
     },
-    emits: ['add-to-cart', 'quick-view'],
-    setup(props, { emit }) {
-        const imageUrl = computed(() => props.product.thumbnail || props.product.image);
-        const title = computed(() => props.product.title);
-        const price = computed(() => props.product.price);
-
-        const formattedPrice = computed(() => {
-            return `${price.value} ${props.priceFormat}`;
-        });
-
-        const onAddToCart = () => {
-            emit('add-to-cart', props.product);
-        };
-
-        const onQuickView = () => {
-            emit('quick-view', props.product);
-        };
-
-        return {
-            imageUrl,
-            title,
-            formattedPrice,
-            onAddToCart,
-            onQuickView,
-            PRODUCT_CARD_TEXTS,
-        };
+    priceFormat: {
+        type: String,
+        default: 'TL',
     },
+});
+
+const emit = defineEmits(['add-to-cart', 'quick-view']);
+
+const imageUrl = computed(() => props.product.thumbnail || props.product.image);
+const title = computed(() => props.product.title);
+const price = computed(() => props.product.price);
+
+const formattedPrice = computed(() => {
+    const formattedValue = price.value.toFixed(2).replace('.', ',');
+    return `${formattedValue} ${props.priceFormat}`;
+});
+
+const onAddToCart = () => {
+    emit('add-to-cart', props.product);
+};
+
+const onQuickView = () => {
+    emit('quick-view', props.product);
 };
 </script>
 
@@ -160,6 +142,7 @@ export default {
         justify-content: center;
         opacity: 0;
         visibility: hidden;
+        transition: all 0.3s ease;
 
         @include for-mobile {
             display: none;
@@ -210,11 +193,13 @@ export default {
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
         -webkit-box-orient: vertical;
 
         @include for-mobile {
             min-height: 72px;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
         }
     }
 

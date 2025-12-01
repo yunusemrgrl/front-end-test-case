@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "nuxt": "^4.2.1",
     "swiper": "^12.0.3",
     "vue": "^3.5.25",

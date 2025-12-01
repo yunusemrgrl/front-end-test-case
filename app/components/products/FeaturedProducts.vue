@@ -32,6 +32,7 @@
 <script>
 import { computed, onMounted } from 'vue';
 import { useProducts } from '@/composables/useProducts';
+import { useCart } from '@/composables/use-cart';
 import ProductCard from './ProductCard.vue';
 import ProductCardSkeleton from './ProductCardSkeleton.vue';
 import { Button, Divider } from '@/components/ui';
@@ -48,7 +49,7 @@ export default {
   props: {
     limit: {
       type: Number,
-      default: 8,
+      default: 4,
     },
     title: {
       type: String,
@@ -87,16 +88,17 @@ export default {
       default: FEATURED_PRODUCTS_TEXTS.VIEW_ALL,
     },
   },
-  emits: ['add-to-cart', 'quick-view', 'view-all', 'error'],
+  emits: ['quick-view', 'view-all', 'error'],
   setup(props, { emit }) {
     const { products, isLoading, error, getProducts } = useProducts();
+    const { addToCart } = useCart();
 
     const displayedProducts = computed(() => {
       return products.value.slice(0, props.limit);
     });
 
-    const handleAddToCart = (product) => {
-      emit('add-to-cart', product);
+    const handleAddToCart = async (product) => {
+      await addToCart(product);
     };
 
     const handleQuickView = (product) => {
@@ -104,7 +106,7 @@ export default {
     };
 
     const handleRetry = async () => {
-      await getProducts(30);
+      await getProducts(props.limit);
     };
 
     const handleViewAll = () => {
@@ -113,7 +115,7 @@ export default {
 
     onMounted(async () => {
       try {
-        await getProducts(30);
+        await getProducts(props.limit);
       } catch (err) {
         emit('error', err);
       }
@@ -149,7 +151,6 @@ export default {
     justify-content: center;
     margin-bottom: 40px;
     gap: 32px;
-
 
     @include for-mobile {
       margin-bottom: 16px;
