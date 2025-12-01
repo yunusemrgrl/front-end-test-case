@@ -85,12 +85,6 @@ export default {
     font-size: $text-sm;
   }
 
-  &.button-medium {
-    height: 40px;
-    padding: 0 24px;
-    font-size: $text-base;
-  }
-
   &.button-large {
     height: 56px;
     padding: 0 32px;
@@ -150,9 +144,12 @@ export default {
 }
 
 .button-product-card {
+  height: 24px !important;
   font-weight: $fw-medium;
+  font-size: $text-sm !important;
   color: $color-white;
   background-color: transparent;
+  padding: 0 16px !important;
 
   &:hover {
     background-color: $color-white-20;
