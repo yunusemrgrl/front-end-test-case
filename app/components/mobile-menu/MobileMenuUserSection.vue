@@ -16,24 +16,17 @@
 </template>
 
 <script>
-import HelpIcon from "../icons/HelpIcon.vue";
-import LogoutIcon from "../icons/LogoutIcon.vue";
-import OrdersIcon from "../icons/OrdersIcon.vue";
-import UserIcon from "../icons/UserIcon.vue";
-import { Divider } from "../ui";
+import { Divider } from '@/components/ui';
+import { HelpIcon, LogoutIcon, OrdersIcon, UserIcon } from '@/components/icons';
+import { USER_MENU_ITEMS } from '@/constants/user-menu-items';
 
 export default {
     name: 'MobileMenuUserSection',
-    components: { Divider, UserIcon, OrdersIcon, HelpIcon, LogoutIcon },
+    components: { Divider, HelpIcon, LogoutIcon, OrdersIcon, UserIcon },
     props: {
         user: {
             type: Array,
-            default: () => [
-                { label: 'My Profile', icon: 'user', route: '#' },
-                { label: 'Order history', icon: 'orders', route: '#' },
-                { label: 'Help center', icon: 'help', route: '#' },
-                { label: 'Logout', icon: 'logout', route: '#' },
-            ]
+            default: () => USER_MENU_ITEMS,
         },
     },
     methods: {
@@ -54,4 +47,34 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./MobileMenuUserSection.scss"></style>
+<style lang="scss" scoped>
+.mobile-menu {
+    &__user {
+        &-list {
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            gap: 16px;
+            background-color: $color-smoke-30;
+        }
+
+        &-button {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            width: 100%;
+            height: 24px;
+            gap: 14px;
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        &-label {
+            font-size: $text-sm;
+            font-weight: $fw-medium;
+            color: $color-graphene;
+        }
+    }
+}
+</style>

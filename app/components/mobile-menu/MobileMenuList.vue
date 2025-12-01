@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import MobileMenuListItem from './MobileMenuListItem.vue'
+import MobileMenuListItem from '@/components/mobile-menu/MobileMenuListItem.vue'
 
 export default {
     name: 'MobileMenuList',
@@ -25,4 +25,14 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./MobileMenuList.scss"></style>
+<style lang="scss" scoped>
+.mobile-menu {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        list-style: none;
+        overflow: auto;
+    }
+}
+</style>

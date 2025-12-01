@@ -32,4 +32,53 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./MobileMenuHeader.scss"></style>
+<style lang="scss" scoped>
+.mobile-menu {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        padding-inline: 16px;
+        background: $color-titan-white;
+        position: relative;
+
+        &-left,
+        &-right {
+            display: flex;
+            align-items: center;
+        }
+
+        &-title {
+            font-weight: $fw-medium;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            line-height: 1;
+        }
+    }
+
+    &__title {
+        font-weight: $fw-medium;
+        font-size: $text-lg;
+        color: $color-coal;
+    }
+
+    &__close,
+    &__back {
+        width: 24px;
+        height: 24px;
+        background: transparent;
+        padding: 0;
+        border: 0;
+        cursor: pointer;
+
+        :deep(svg path) {
+            stroke: $color-graphene;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+}
+</style>

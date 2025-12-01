@@ -25,7 +25,7 @@ const props = defineProps({
   variant: {
     type: String,
     default: 'primary',
-    validator: (value) => ['primary', 'secondary', 'outline'].includes(value),
+    validator: (value) => ['primary', 'secondary', 'outline', 'product-card'].includes(value),
   },
   isDisabled: {
     type: Boolean,
@@ -61,9 +61,9 @@ const handleClick = (event) => {
   padding: 0 16px;
   border: none;
   border-radius: 4px;
+  font-family: $ff-primary;
   font-size: $text-sm;
   font-weight: $fw-bold;
-  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -115,6 +115,16 @@ const handleClick = (event) => {
   }
 }
 
+.button-product-card {
+  font-weight: $fw-medium;
+  color: $color-white;
+  background-color: transparent;
+
+  &:hover {
+    background-color: $color-white-20;
+  }
+}
+
 .button-disabled {
   opacity: 0.3;
   cursor: not-allowed;
@@ -122,7 +132,7 @@ const handleClick = (event) => {
 }
 
 .button-icon {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -136,7 +146,7 @@ const handleClick = (event) => {
 }
 
 .button-text {
-  display: inline-flex;
+  display: flex;
   align-items: center;
 }
 </style>

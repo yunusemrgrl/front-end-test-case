@@ -25,11 +25,11 @@ export default {
         },
         borderColor: {
             type: String,
-            default: null,
+            default: 'currentColor',
         },
         backgroundColor: {
             type: String,
-            default: null,
+            default: 'currentColor',
         },
     },
     computed: {
