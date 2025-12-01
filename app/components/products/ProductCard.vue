@@ -67,7 +67,8 @@ const title = computed(() => props.product.title);
 const price = computed(() => props.product.price);
 
 const formattedPrice = computed(() => {
-    return `${price.value} ${props.priceFormat}`;
+    const formattedValue = price.value.toFixed(2).replace('.', ',');
+    return `${formattedValue} ${props.priceFormat}`;
 });
 
 const onAddToCart = () => {

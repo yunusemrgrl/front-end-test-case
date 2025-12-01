@@ -9,8 +9,8 @@
         <div class="cart-item__price">{{ formattedPrice }}</div>
 
         <div class="cart-item__quantity-control">
-          <button class="cart-item__quantity-btn" :disabled="item.quantity <= 1"
-            @click="updateQuantity(item.quantity - 1)" :aria-label="texts.DECREASE_QUANTITY">
+          <button class="cart-item__quantity-btn" 
+            @click="updateQuantity(item.quantity + 1)" :aria-label="texts.DECREASE_QUANTITY">
             <div class="icon-wrapper">
               <PlusIcon />
             </div>
@@ -18,7 +18,7 @@
 
           <span class="cart-item__quantity-value">{{ item.quantity }}</span>
 
-          <button class="cart-item__quantity-btn" @click="updateQuantity(item.quantity + 1)"
+          <button class="cart-item__quantity-btn" :disabled="item.quantity <= 1" @click="updateQuantity(item.quantity - 1)"
             :aria-label="texts.INCREASE_QUANTITY">
             <div class="icon-wrapper">
               <MinusIcon />

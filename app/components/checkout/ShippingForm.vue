@@ -32,6 +32,7 @@
         </div>
         <div class="shipping-form__group shipping-form__group--half">
           <Input v-model="formData.phone" :label="texts.PHONE_LABEL" :placeholder="texts.PLACEHOLDERS.PHONE" type="tel"
+            maxlength="15"
             :has-error="hasFieldError('phone')"
             :error-message="getFieldError('phone', texts.ERROR_MESSAGES.PHONE_INVALID)" @update:modelValue="updateForm"
             @blur="touchField('phone')" />

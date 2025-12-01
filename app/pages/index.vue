@@ -3,7 +3,6 @@
     <HeroSection />
     <FeaturedProducts 
       :limit="4"
-      @add-to-cart="handleAddToCart"
       @quick-view="handleQuickView"
       @view-all="handleViewAll"
     />
@@ -16,19 +15,18 @@
 </template>
 
 <script>
+import HeroSection from '@/components/hero/HeroSection.vue';
 import FeaturedProducts from '@/components/products/FeaturedProducts.vue';
 import NewsletterSignUp from '@/components/newsletter/NewsletterSignUp.vue';
 
 export default {
   name: 'IndexPage',
   components: {
+    HeroSection,
     FeaturedProducts,
     NewsletterSignUp,
   },
   setup() {
-    const handleAddToCart = (product) => {
-    };
-
     const handleQuickView = (product) => {
     };
 
@@ -45,7 +43,6 @@ export default {
     };
 
     return {
-      handleAddToCart,
       handleQuickView,
       handleViewAll,
       handleSubscribe,

@@ -13,20 +13,13 @@
 </template>
 
 <script>
+import { NAV_ITEMS } from '@/constants/menu-items';
+
 export default {
     name: 'TopBarNav', 
     data() {
         return {
-            navItems: [
-                { label: 'Campaigns', url: '#' },
-                { label: 'Personal Care', url: '#' },
-                { label: 'Skin Care', url: '#' },
-                { label: 'Make - Up', url: '#' },
-                { label: 'Mother & Baby', url: '#' },
-                { label: 'Men Care', url: '#' },
-                { label: 'Healthy Life', url: '#' },
-                { label: 'Brands', url: '#' },
-            ],
+            navItems: NAV_ITEMS,
         };
     },
 };
@@ -50,6 +43,12 @@ export default {
         color: $color-coal;
         text-transform: uppercase;
         cursor: pointer;
+
+        &:hover {
+            background-color: $color-smoke-30;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
 
         a {
             text-decoration: none;

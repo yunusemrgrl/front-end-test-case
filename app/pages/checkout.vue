@@ -36,6 +36,7 @@ import PaymentForm from '@/components/checkout/PaymentForm.vue';
 import OrderSummary from '@/components/checkout/OrderSummary.vue';
 import { Button, Breadcrumbs } from '@/components/ui';
 import { CHECKOUT_BREADCRUMBS, CHECKOUT_TITLES, PAYMENT_FORM_TEXTS } from '@/constants/checkout';
+import { useCart } from '@/composables/use-cart';
 
 export default {
   name: 'CheckoutPage',
@@ -46,24 +47,17 @@ export default {
     Button,
     Breadcrumbs,
   },
+  setup() {
+    const { cartItems, updateQuantity, subtotal } = useCart();
+
+    return {
+      cartItems,
+      updateQuantity,
+      subtotal,
+    };
+  },
   data() {
     return {
-      cartItems: [
-        {
-          id: 1,
-          title: 'Herbal Science Boom Butter Hair Care Oil 190ml',
-          price: 44.95,
-          quantity: 1,
-          image: 'https://cdn.dsmcdn.com/ty96/product/media/images/20210405/14/78002533/14083666/1/1_org_zoom.jpg'
-        },
-        {
-          id: 2,
-          title: 'Ashley Joy Strengthening Shampoo 400ml',
-          price: 29.45,
-          quantity: 1,
-          image: 'https://cdn.dsmcdn.com/ty428/product/media/images/20220512/12/110092596/57933697/1/1_org_zoom.jpg'
-        }
-      ],
       shippingDetails: { isValid: false },
       paymentDetails: { isValid: false },
       shippingCost: 10.50,
@@ -73,9 +67,6 @@ export default {
     };
   },
   computed: {
-    subtotal() {
-      return this.cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    },
     total() {
       return this.subtotal + this.shippingCost;
     }
@@ -87,20 +78,8 @@ export default {
     updatePaymentDetails(details) {
       this.paymentDetails = details;
     },
-    updateQuantity({ id, quantity }) {
-      const item = this.cartItems.find(i => i.id === id);
-      if (item) {
-        item.quantity = quantity;
-      }
-    },
     handlePayment() {
-      console.log('Processing payment...', {
-        shipping: this.shippingDetails,
-        payment: this.paymentDetails,
-        items: this.cartItems,
-        total: this.total
-      });
-      alert('Payment processed (Check console for details)');
+      alert('Later...');
     }
   }
 };
