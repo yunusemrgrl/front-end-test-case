@@ -11,48 +11,25 @@
 </template>
 
 <script>
-// Local imports for subcomponents and icons
-import MobileMenuHeader from './mobile-menu/MobileMenuHeader.vue'
-import MobileMenuPanels from './mobile-menu/MobileMenuPanels.vue'
-import MobileMenuUserSection from './mobile-menu/MobileMenuUserSection.vue'
-import UserIcon from './icons/UserIcon.vue'
-import OrdersIcon from './icons/OrdersIcon.vue'
-import HelpIcon from './icons/HelpIcon.vue'
-import LogoutIcon from './icons/LogoutIcon.vue'
+import MobileMenuHeader from '@/components/mobile-menu/MobileMenuHeader.vue';
+import MobileMenuPanels from '@/components/mobile-menu/MobileMenuPanels.vue';
+import MobileMenuUserSection from '@/components/mobile-menu/MobileMenuUserSection.vue';
+import { HelpIcon, LogoutIcon, OrdersIcon, UserIcon } from '@/components/icons';
+import { MENU_ITEMS } from '@/constants/menu-items';
+import { USER_MENU_ITEMS } from '@/constants/user-menu-items';
 
 export default {
     name: 'MobileMenu',
-    components: { MobileMenuHeader, MobileMenuPanels, MobileMenuUserSection },
+    components: { MobileMenuHeader, MobileMenuPanels, MobileMenuUserSection, UserIcon, OrdersIcon, HelpIcon, LogoutIcon },
     props: {
         items: {
             type: Array,
-            default: () => [
-                { label: 'Campaigns' },
-                { label: 'Personal Care' },
-                {
-                    label: 'Skin Care',
-                    children: [
-                        { label: 'Facial Treatment' },
-                        { label: 'Hand and Face Care' },
-                        { label: 'Natural Skin Products' },
-                    ],
-                },
-                { label: 'Make - Up' },
-                { label: 'Mother & Baby' },
-                { label: 'Men Care' },
-                { label: 'Healthy Life' },
-                { label: 'Brands' },
-            ],
+            default: () => MENU_ITEMS,
         },
 
         user: {
             type: Array,
-            default: () => [
-                { label: 'My Profile', icon: 'user', route: '#' },
-                { label: 'Order history', icon: 'orders', route: '#' },
-                { label: 'Help center', icon: 'help', route: '#' },
-                { label: 'Logout', icon: 'logout', route: '#' },
-            ]
+            default: () => USER_MENU_ITEMS,
         }
     },
     data() {
@@ -102,5 +79,64 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./mobile-menu/mobile-menu.scss">
+<style lang="scss" scoped>
+.mobile-menu-overlay {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.36);
+    z-index: 1000;
+}
+
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 300px;
+    background: $color-white;
+    transform: translateX(0);
+}
+
+.mobile-menu {
+    &__panel {
+        &.is-children-active {
+            .mobile-menu__item-label {
+                color: $color-graphene;
+                font-weight: $fw-regular;
+            }
+
+        }
+    }
+}
+
+.mobile-menu {
+    &-enter-active,
+    &-leave-active {
+        transition: opacity 200ms ease-in-out;
+
+        .mobile-menu {
+            transition: transform 100ms ease-in-out;
+        }
+    }
+
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+
+        .mobile-menu {
+            transform: translateX(100%);
+        }
+    }
+
+    &-enter-to,
+    &-leave-from {
+        opacity: 1;
+
+        .mobile-menu {
+            transform: translateX(0);
+        }
+    }
+}
 </style>

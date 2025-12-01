@@ -24,45 +24,35 @@
   </section>
 </template>
 
-<script setup>
+<script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Button } from '@/components/ui';
+import { HERO_SLIDES } from '@/constants/hero-slides';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const modules = [Navigation, Pagination, Autoplay];
+export default {
+  name: 'HeroSection',
+  components: {
+    Swiper,
+    SwiperSlide,
+    Button,
+  },
+  setup() {
+    const modules = [Navigation, Pagination, Autoplay];
+    const slides = HERO_SLIDES;
 
-const slides = [
-  {
-    subtitle: 'NATURALS BY WATSONS',
-    title: 'The new 2021 collection',
-    description:
-      'Known as "the miracle plant", Aloe Vera helps to nourish, moisturize and keep the hair looking smooth. Let your hair be flexible and fresh.',
-    buttonText: 'SHOP NOW',
-    image: '/images/right-part.png',
-  },
-  {
-    subtitle: 'NATURALS BY WATSONS',
-    title: 'The new 2021 collection',
-    description:
-      'Known as "the miracle plant", Aloe Vera helps to nourish, moisturize and keep the hair looking smooth. Let your hair be flexible and fresh.',
-    buttonText: 'SHOP NOW',
-    image: '/images/right-part.png',
-  },
-  {
-    subtitle: 'NATURALS BY WATSONS',
-    title: 'The new 2021 collection',
-    description:
-      'Known as "the miracle plant", Aloe Vera helps to nourish, moisturize and keep the hair looking smooth. Let your hair be flexible and fresh.',
-    buttonText: 'SHOP NOW',
-    image: '/images/right-part.png',
-  },
-];
+    const handleShopNow = () => {
+    };
 
-const handleShopNow = () => {
-  // Navigate to shop page or open product modal
+    return {
+      modules,
+      slides,
+      handleShopNow,
+    };
+  },
 };
 </script>
 
