@@ -3,7 +3,9 @@
     :class="[
       'base-button',
       `button-${variant}`,
+      `button-${size}`,
       { 'button-disabled': isDisabled },
+      { 'button-full-width': fullWidth },
     ]"
     :disabled="isDisabled"
     @click="handleClick"
@@ -20,32 +22,44 @@
   </button>
 </template>
 
-<script setup>
-const props = defineProps({
-  variant: {
-    type: String,
-    default: 'primary',
-    validator: (value) => ['primary', 'secondary', 'outline', 'product-card'].includes(value),
+<script>
+export default {
+  name: 'BaseButton',
+  props: {
+    variant: {
+      type: String,
+      default: 'primary',
+      validator: (value) => ['primary', 'secondary', 'outline', 'product-card'].includes(value),
+    },
+    size: {
+      type: String,
+      default: 'medium',
+      validator: (value) => ['small', 'medium', 'large'].includes(value),
+    },
+    fullWidth: {
+      type: Boolean,
+      default: false,
+    },
+    isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    hasLeftIcon: {
+      type: Boolean,
+      default: false,
+    },
+    hasRightIcon: {
+      type: Boolean,
+      default: false,
+    },
   },
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  hasLeftIcon: {
-    type: Boolean,
-    default: false,
-  },
-  hasRightIcon: {
-    type: Boolean,
-    default: false,
-  },
-});
-
-const emit = defineEmits(['click']);
-
-const handleClick = (event) => {
-  if (!props.isDisabled) {
-    emit('click', event);
+  emits: ['click'],
+  methods: {
+    handleClick(event) {
+      if (!this.isDisabled) {
+        this.$emit('click', event);
+      }
+    }
   }
 };
 </script>
@@ -57,16 +71,36 @@ const handleClick = (event) => {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 32px;
-  padding: 0 16px;
   border: none;
   border-radius: 4px;
   font-family: $ff-primary;
-  font-size: $text-sm;
   font-weight: $fw-bold;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+
+  &.button-small {
+    height: 32px;
+    padding: 0 16px;
+    font-size: $text-sm;
+  }
+
+  &.button-medium {
+    height: 40px;
+    padding: 0 24px;
+    font-size: $text-base;
+  }
+
+  &.button-large {
+    height: 56px;
+    padding: 0 32px;
+    font-size: $text-lg;
+  }
+
+  &.button-full-width {
+    width: 100%;
+    display: flex;
+  }
 
   &:focus-visible {
     outline: 2px solid $color-primary;
@@ -150,4 +184,3 @@ const handleClick = (event) => {
   align-items: center;
 }
 </style>
-
