@@ -103,6 +103,7 @@ export default {
 }
 
 .button-primary {
+  height: 32px;
   background: $color-primary;
   color: $color-white;
 
@@ -116,6 +117,7 @@ export default {
 }
 
 .button-secondary {
+  height: 32px;
   background: $color-secondary;
   color: $color-white;
 
@@ -129,6 +131,7 @@ export default {
 }
 
 .button-outline {
+  height: 32px;
   background: transparent;
   color: $color-primary;
   border: 2px solid $color-primary;
