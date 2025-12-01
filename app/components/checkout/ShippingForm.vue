@@ -45,7 +45,7 @@
           <Select v-model="formData.city" :options="cityOptions" :placeholder="texts.PLACEHOLDERS.SELECT"
             @update:modelValue="handleCityChange" />
         </div>
-        <div class="shipping-form__group shipping-form__group--half">
+        <div class="shipping-form__group shipping-form__group--half" :style="{ 'opacity': formData.city ? '1' : '0.5' }">
           <label class="shipping-form__label">{{ texts.DISTRICT_LABEL }}</label>
           <Select v-model="formData.district" :options="districtOptions" :placeholder="texts.PLACEHOLDERS.SELECT"
             :is-disabled="!formData.city" @update:modelValue="updateForm" />
@@ -180,7 +180,7 @@ export default {
 
   &__label {
     font-size: $text-sm;
-    font-weight: $fw-bold;
+    font-weight: $fw-regular;
     color: $color-coal;
   }
 
