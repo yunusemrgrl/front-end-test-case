@@ -6,9 +6,9 @@
         }">
 
             <div v-if="panelIndex === stack.length - 1 && panelIndex !== 0" class="mobile-menu__panel-header">
-                <div class="mobile-menu__panel-pill">
+                <div v-if="canGoBack" class="mobile-menu__panel-pill" @click="goBack">
                     <span class="mobile-menu__panel-pill-label">{{ panel.title }}</span>
-                    <button v-if="canGoBack" class="mobile-menu__back" @click="goBack" aria-label="Go back">
+                    <button class="mobile-menu__back" aria-label="Go back">
                         <ChevronIcon rotate="right" />
                     </button>
                 </div>
@@ -91,6 +91,7 @@ export default {
             height: 40px;
             gap: 8px;
             background-color: $color-smoke-30;
+            cursor: pointer;
 
             &-label {
                 font-weight: $fw-medium;

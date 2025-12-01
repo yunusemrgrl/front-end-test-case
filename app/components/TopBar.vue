@@ -33,8 +33,10 @@
                     <Divider variant="thin" orientation="vertical" class="top-bar__divider desktop-only" :height="24" />
 
                     <div class="top-bar__basket">
-                        <BasketIcon class="top-bar__basket-icon" :width="23" :height="18"
-                            color="var(--color-graphene)" />
+                        <NuxtLink to="/checkout">
+                            <BasketIcon class="top-bar__basket-icon" :width="23" :height="18"
+                                color="var(--color-graphene)" />
+                        </NuxtLink>
                         <ShoppingIndicator class="top-bar__basket-indicator" :size="16" color="var(--color-error)"
                             :count="2" />
                     </div>
@@ -238,6 +240,7 @@ export default {
         color: $color-coal;
         font-size: $text-sm;
         font-weight: $fw-medium;
+        white-space: nowrap;
         padding-left: 2px;
     }
 

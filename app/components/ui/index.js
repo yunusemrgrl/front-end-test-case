@@ -3,3 +3,6 @@ export { default as Avatar } from './Avatar.vue';
 export { default as ShoppingIndicator } from './ShoppingIndicator.vue';
 export { default as Button } from './Button.vue';
 export { default as Input } from './Input.vue';
+export { default as Select } from './Select.vue';
+export { default as Image } from './Image.vue';
+export { default as Breadcrumbs } from './Breadcrumbs.vue';
