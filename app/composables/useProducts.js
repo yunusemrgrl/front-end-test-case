@@ -1,7 +1,8 @@
 import { ref } from 'vue';
 import { fetchProducts, fetchProductById, searchProducts } from '@/services/api';
+import { PRODUCT_ERROR_MESSAGES, PRODUCT_CONFIG } from '@/constants/products';
 
-export const useProducts = (initialLimit = 30) => {
+export const useProducts = (initialLimit = PRODUCT_CONFIG.DEFAULT_LIMIT) => {
   const products = ref([]);
   const isLoading = ref(true);
   const error = ref(null);
@@ -16,7 +17,7 @@ export const useProducts = (initialLimit = 30) => {
       products.value = response.products;
       total.value = response.total;
     } catch (err) {
-      error.value = err.message || 'Failed to fetch products';
+      error.value = err.message || PRODUCT_ERROR_MESSAGES.FETCH_PRODUCTS;
       products.value = [];
     } finally {
       isLoading.value = false;
@@ -31,7 +32,7 @@ export const useProducts = (initialLimit = 30) => {
       const product = await fetchProductById(id);
       return product;
     } catch (err) {
-      error.value = err.message || `Failed to fetch product ${id}`;
+      error.value = err.message || `${PRODUCT_ERROR_MESSAGES.FETCH_PRODUCT_BY_ID} ${id}`;
       return null;
     } finally {
       isLoading.value = false;
@@ -52,7 +53,7 @@ export const useProducts = (initialLimit = 30) => {
       products.value = response.products;
       total.value = response.total;
     } catch (err) {
-      error.value = err.message || 'Failed to search products';
+      error.value = err.message || PRODUCT_ERROR_MESSAGES.SEARCH_PRODUCTS;
       products.value = [];
     } finally {
       isLoading.value = false;

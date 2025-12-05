@@ -38,6 +38,7 @@
 import CartItem from '@/components/checkout/CartItem.vue';
 import { Input, Divider } from '@/components/ui';
 import { CHECKOUT_TITLES, ORDER_SUMMARY_TEXTS } from '@/constants/checkout';
+import { formatPrice } from '@/helpers/format-currency';
 
 export default {
   name: 'OrderSummary',
@@ -74,21 +75,18 @@ export default {
   },
   computed: {
     formattedSubtotal() {
-      return this.formatPrice(this.subtotal);
+      return formatPrice(this.subtotal);
     },
     formattedShippingCost() {
-      return this.formatPrice(this.shippingCost);
+      return formatPrice(this.shippingCost);
     },
     formattedTotal() {
-      return this.formatPrice(this.total);
+      return formatPrice(this.total);
     }
   },
   methods: {
     handleUpdateQuantity(payload) {
       this.$emit('update-quantity', payload);
-    },
-    formatPrice(price) {
-      return `${price.toFixed(2).replace('.', ',')} TL`;
     }
   }
 };
@@ -137,7 +135,7 @@ export default {
     flex-direction: column;
     gap: 24px;
 
-   
+
   }
 
   &__discount {

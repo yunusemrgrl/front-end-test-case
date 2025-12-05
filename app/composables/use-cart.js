@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue';
 import { addCart, updateCart } from '@/services/api';
+import { CART_ERROR_MESSAGES, CART_CONFIG } from '@/constants/cart';
 
 const cartItems = ref([]);
 const currentCartId = ref(null);
@@ -37,17 +38,17 @@ export const useCart = () => {
           syncCartFromApi(response);
         } catch (apiError) {
           currentCartId.value = null;
-          const newResponse = await addCart(1, productsForApi);
+          const newResponse = await addCart(CART_CONFIG.DEFAULT_USER_ID, productsForApi);
           currentCartId.value = newResponse.id;
           syncCartFromApi(newResponse);
         }
       } else {
-        const response = await addCart(1, productsForApi);
+        const response = await addCart(CART_CONFIG.DEFAULT_USER_ID, productsForApi);
         currentCartId.value = response.id;
         syncCartFromApi(response);
       }
     } catch (err) {
-      error.value = err.message || 'Sepete eklenirken bir hata oluştu';
+      error.value = err.message || CART_ERROR_MESSAGES.ADD_TO_CART;
     } finally {
       isLoading.value = false;
     }
@@ -79,13 +80,13 @@ export const useCart = () => {
           syncCartFromApi(response);
         } catch (apiError) {
           currentCartId.value = null;
-          const newResponse = await addCart(1, productsForApi);
+          const newResponse = await addCart(CART_CONFIG.DEFAULT_USER_ID, productsForApi);
           currentCartId.value = newResponse.id;
           syncCartFromApi(newResponse);
         }
       }
     } catch (err) {
-      error.value = err.message || 'Sepetten kaldırılırken bir hata oluştu';
+      error.value = err.message || CART_ERROR_MESSAGES.REMOVE_FROM_CART;
     } finally {
       isLoading.value = false;
     }
@@ -117,13 +118,13 @@ export const useCart = () => {
           syncCartFromApi(response);
         } catch (apiError) {
           currentCartId.value = null;
-          const newResponse = await addCart(1, productsForApi);
+          const newResponse = await addCart(CART_CONFIG.DEFAULT_USER_ID, productsForApi);
           currentCartId.value = newResponse.id;
           syncCartFromApi(newResponse);
         }
       }
     } catch (err) {
-      error.value = err.message || 'Miktar güncellenirken bir hata oluştu';
+      error.value = err.message || CART_ERROR_MESSAGES.UPDATE_QUANTITY;
     } finally {
       isLoading.value = false;
     }
@@ -165,8 +166,7 @@ export const useCart = () => {
   });
 
   const total = computed(() => {
-    const shippingCost = 10.50;
-    return subtotal.value + shippingCost;
+    return subtotal.value + CART_CONFIG.SHIPPING_COST;
   });
 
   return {
