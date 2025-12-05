@@ -6,3 +6,4 @@ export { default as Input } from './Input.vue';
 export { default as Select } from './Select.vue';
 export { default as Image } from './Image.vue';
 export { default as Breadcrumbs } from './Breadcrumbs.vue';
+export { default as SectionHeader } from './SectionHeader.vue';

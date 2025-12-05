@@ -37,7 +37,7 @@ export default {
     justify-content: center;
     color: $color-navy-blue;
     background: $color-secondary;
-    background-image: url('/images/discount-banner-bg.png');
+    background-image: url('/images/discount/discount-banner-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -2,7 +2,7 @@
 export const DISCOUNT_BANNER_DATA = {
   content: `
   <figure class="discount-banner__image-wrapper discount-banner__image-wrapper--left">
-    <img src="/images/discount-banner-left.png" alt="Nivea Deodorant Sprays" class="discount-banner__image"
+    <img src="/images/discount/discount-banner-left.png" alt="Nivea Deodorant Sprays" class="discount-banner__image"
         loading="lazy" />
   </figure>
   <div class="discount-banner__content-box">
@@ -19,7 +19,7 @@ export const DISCOUNT_BANNER_DATA = {
     </button>
   </div>
   <figure class="discount-banner__image-wrapper discount-banner__image-wrapper--right">
-    <img src="/images/discount-banner-right.png" alt="Nivea Men Products"
+    <img src="/images/discount/discount-banner-right.png" alt="Nivea Men Products"
         class="discount-banner__image" loading="lazy" />
   </figure>
   `,
