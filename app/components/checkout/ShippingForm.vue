@@ -32,20 +32,20 @@
         </div>
         <div class="shipping-form__group shipping-form__group--half">
           <Input v-model="formData.phone" :label="texts.PHONE_LABEL" :placeholder="texts.PLACEHOLDERS.PHONE" type="tel"
-            maxlength="15"
-            :has-error="hasFieldError('phone')"
+            maxlength="15" :has-error="hasFieldError('phone')"
             :error-message="getFieldError('phone', texts.ERROR_MESSAGES.PHONE_INVALID)" @update:modelValue="updateForm"
             @blur="touchField('phone')" />
         </div>
       </div>
-      
+
       <div class="shipping-form__row">
         <div class="shipping-form__group shipping-form__group--half">
           <label class="shipping-form__label">{{ texts.CITY_LABEL }}</label>
           <Select v-model="formData.city" :options="cityOptions" :placeholder="texts.PLACEHOLDERS.SELECT"
             @update:modelValue="handleCityChange" />
         </div>
-        <div class="shipping-form__group shipping-form__group--half" :style="{ 'opacity': formData.city ? '1' : '0.5' }">
+        <div class="shipping-form__group shipping-form__group--half"
+          :style="{ 'opacity': formData.city ? '1' : '0.5' }">
           <label class="shipping-form__label">{{ texts.DISTRICT_LABEL }}</label>
           <Select v-model="formData.district" :options="districtOptions" :placeholder="texts.PLACEHOLDERS.SELECT"
             :is-disabled="!formData.city" @update:modelValue="updateForm" />

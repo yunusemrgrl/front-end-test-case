@@ -14,8 +14,7 @@
             :helper-text="texts.CARD_HOLDER_HELPER_TEXT" :placeholder="texts.PLACEHOLDERS.CARD_HOLDER" maxlength="50"
             :has-error="hasFieldError('cardHolder')"
             :error-message="getFieldError('cardHolder', texts.ERROR_MESSAGES.CARD_HOLDER_REQUIRED)"
-            @update:modelValue="handleCardHolderInput" @blur="touchField('cardHolder')"
-            @keydown="preventNumbers" />
+            @update:modelValue="handleCardHolderInput" @blur="touchField('cardHolder')" @keydown="preventNumbers" />
         </div>
 
         <div class="payment-form__group">
@@ -23,8 +22,7 @@
             :helper-text="texts.CARD_NUMBER_HELPER_TEXT" :placeholder="texts.PLACEHOLDERS.CARD_NUMBER" type="tel"
             maxlength="19" :has-error="hasFieldError('cardNumber')"
             :error-message="getFieldError('cardNumber', texts.ERROR_MESSAGES.CARD_NUMBER_INVALID)"
-            @update:modelValue="handleCardNumberInput" @blur="touchField('cardNumber')"
-            @keydown="preventLetters" />
+            @update:modelValue="handleCardNumberInput" @blur="touchField('cardNumber')" @keydown="preventLetters" />
         </div>
 
         <div class="payment-form__row">
@@ -33,15 +31,13 @@
               :helper-text="texts.EXPIRY_DATE_HELPER_TEXT" :placeholder="texts.PLACEHOLDERS.EXPIRY_DATE" type="tel"
               maxlength="7" :has-error="hasFieldError('expiryDate')"
               :error-message="getFieldError('expiryDate', texts.ERROR_MESSAGES.EXPIRY_DATE_REQUIRED)"
-              @update:modelValue="handleExpiryInput" @blur="touchField('expiryDate')"
-              @keydown="preventLetters" />
+              @update:modelValue="handleExpiryInput" @blur="touchField('expiryDate')" @keydown="preventLetters" />
           </div>
           <div class="payment-form__group payment-form__group--half">
             <Input v-model="formData.cvv" :label="texts.CVV_LABEL" :helper-text="texts.CVV_HELPER_TEXT"
               :placeholder="texts.PLACEHOLDERS.CVV" type="tel" maxlength="4" :has-error="hasFieldError('cvv')"
               :error-message="getFieldError('cvv', texts.ERROR_MESSAGES.CVV_INVALID)"
-              @update:modelValue="handleCvvInput" @blur="touchField('cvv')"
-              @keydown="preventLetters">
+              @update:modelValue="handleCvvInput" @blur="touchField('cvv')" @keydown="preventLetters">
             <template #right-icon>
               <HelpIconFilled />
             </template>

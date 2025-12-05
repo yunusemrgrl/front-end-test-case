@@ -3,17 +3,17 @@
     <div class="card-chip">
       <CardChipIcon />
     </div>
-    
+
     <h4 class="card-number">{{ formattedCardNumber }}</h4>
-    
+
     <div class="card-details">
       <div class="detail-group">
-        <span class="detail-label">Card Holder</span>
-        <span class="detail-value">{{ cardHolder || 'Full Name' }}</span>
+        <span class="detail-label">{{ labels.CARD_HOLDER }}</span>
+        <span class="detail-value">{{ cardHolder || placeholders.CARD_HOLDER }}</span>
       </div>
       <div class="detail-group">
-        <span class="detail-label">Expires</span>
-        <span class="detail-value">{{ expiryDate || 'MM/YY' }}</span>
+        <span class="detail-label">{{ labels.EXPIRES }}</span>
+        <span class="detail-value">{{ expiryDate || placeholders.EXPIRY_DATE }}</span>
       </div>
     </div>
   </div>
@@ -21,8 +21,10 @@
 
 <script>
 import { CardChipIcon } from '@/components/icons';
+import { formatCardNumber } from '@/helpers/format-card-number';
+import { CREDIT_CARD_PLACEHOLDERS, CREDIT_CARD_LABELS } from '@/constants/credit-card';
 
-  export default {
+export default {
   name: 'CreditCardVisual',
   components: {
     CardChipIcon
@@ -41,11 +43,15 @@ import { CardChipIcon } from '@/components/icons';
       default: '',
     },
   },
+  data() {
+    return {
+      placeholders: CREDIT_CARD_PLACEHOLDERS,
+      labels: CREDIT_CARD_LABELS,
+    };
+  },
   computed: {
     formattedCardNumber() {
-      if (!this.cardNumber) return '0000 0000 0000 0000';
-      const digits = this.cardNumber.replace(/\D/g, '');
-      return digits.replace(/(.{4})/g, '$1 ').trim().substring(0, 19);
+      return formatCardNumber(this.cardNumber);
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="cart-item">
-    <Image :src="item.image" :alt="item.title" container-class="cart-item__image-wrapper"
-      image-class="cart-item__image" loading="eager" />
+    <Image :src="item.image" :alt="item.title" container-class="cart-item__image-wrapper" image-class="cart-item__image"
+      loading="eager" />
 
     <div class="cart-item__content">
       <p class="cart-item__title">{{ item.title }}</p>
@@ -9,8 +9,8 @@
         <div class="cart-item__price">{{ formattedPrice }}</div>
 
         <div class="cart-item__quantity-control">
-          <button class="cart-item__quantity-btn" 
-            @click="updateQuantity(item.quantity + 1)" :aria-label="texts.DECREASE_QUANTITY">
+          <button class="cart-item__quantity-btn" @click="updateQuantity(item.quantity + 1)"
+            :aria-label="texts.DECREASE_QUANTITY">
             <div class="icon-wrapper">
               <PlusIcon />
             </div>
@@ -18,8 +18,8 @@
 
           <span class="cart-item__quantity-value">{{ item.quantity }}</span>
 
-          <button class="cart-item__quantity-btn" :disabled="item.quantity <= 1" @click="updateQuantity(item.quantity - 1)"
-            :aria-label="texts.INCREASE_QUANTITY">
+          <button class="cart-item__quantity-btn" :disabled="item.quantity <= 1"
+            @click="updateQuantity(item.quantity - 1)" :aria-label="texts.INCREASE_QUANTITY">
             <div class="icon-wrapper">
               <MinusIcon />
             </div>
@@ -34,6 +34,7 @@
 import { Image } from '@/components/ui';
 import { CART_ITEM_TEXTS } from '@/constants/checkout';
 import { PlusIcon, MinusIcon } from '@/components/icons';
+import { formatPrice } from '@/helpers/format-currency';
 
 export default {
   name: 'CartItem',
@@ -56,7 +57,7 @@ export default {
   },
   computed: {
     formattedPrice() {
-      return this.formatPrice(this.item.price);
+      return formatPrice(this.item.price);
     }
   },
   methods: {
@@ -64,9 +65,6 @@ export default {
       if (newQuantity > 0) {
         this.$emit('update-quantity', { id: this.item.id, quantity: newQuantity });
       }
-    },
-    formatPrice(price) {
-      return `${price.toFixed(2).replace('.', ',')} TL`;
     }
   }
 };

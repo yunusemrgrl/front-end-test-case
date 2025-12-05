@@ -2,11 +2,10 @@ import { reactive, computed } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 
 /**
- * Form validation ve state yönetimi için composable
- * @param {Object} initialData - Form'un başlangıç değerleri
- * @param {Object} validationRules - Vuelidate validasyon kuralları
- * @param {Function} onUpdate - Form güncellendiğinde çalışacak callback
- * @returns {Object} Form state ve yönetim metodları
+ * @param {Object} initialData
+ * @param {Object} validationRules
+ * @param {Function} onUpdate
+ * @returns {Object}
  */
 export const useFormValidation = (initialData, validationRules, onUpdate) => {
   const formData = reactive({ ...initialData });

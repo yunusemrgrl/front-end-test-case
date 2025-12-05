@@ -22,7 +22,7 @@
 
       <div v-else-if="displayedProducts.length > 0" class="featured-products__grid">
         <ProductCard v-for="product in displayedProducts" :key="product.id" :product="product"
-          :show-overlay="showOverlay" :price-format="priceFormat" @add-to-cart="handleAddToCart"
+          :show-overlay="showOverlay" @add-to-cart="handleAddToCart"
           @quick-view="handleQuickView" />
       </div>
     </div>
@@ -66,10 +66,6 @@ export default {
     showViewAll: {
       type: Boolean,
       default: true,
-    },
-    priceFormat: {
-      type: String,
-      default: 'TL',
     },
     loadingText: {
       type: String,
