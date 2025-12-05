@@ -1,11 +1,7 @@
 <template>
   <section class="featured-products">
     <div class="container">
-      <div class="featured-products__header">
-        <Divider variant="medium" orientation="horizontal" color="var(--color-secondary-10)" />
-        <h3 class="featured-products__title">{{ title }}</h3>
-        <Divider variant="medium" orientation="horizontal" color="var(--color-secondary-10)" />
-      </div>
+      <SectionHeader :title="title" />
 
       <div v-if="isLoading" class="featured-products__loading">
         <ProductCardSkeleton v-for="n in limit" :key="n" />
@@ -35,7 +31,7 @@ import { useProducts } from '@/composables/useProducts';
 import { useCart } from '@/composables/use-cart';
 import ProductCard from './ProductCard.vue';
 import ProductCardSkeleton from './ProductCardSkeleton.vue';
-import { Button, Divider } from '@/components/ui';
+import { Button, SectionHeader } from '@/components/ui';
 import { FEATURED_PRODUCTS_TEXTS } from '@/constants/featured-products';
 
 export default {
@@ -44,7 +40,7 @@ export default {
     ProductCard,
     ProductCardSkeleton,
     Button,
-    Divider,
+    SectionHeader,
   },
   props: {
     limit: {
@@ -134,37 +130,8 @@ export default {
 <style lang="scss" scoped>
 .featured-products {
   width: 100%;
-  padding-block: 40px;
   background: $color-snow;
 
-  @include for-mobile {
-    padding: 16px 0;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 40px;
-    gap: 32px;
-
-    @include for-mobile {
-      margin-bottom: 16px;
-    }
-  }
-
-  &__title {
-    font-size: $text-xl;
-    font-weight: $fw-bold;
-    color: $color-secondary;
-    line-height: 32px;
-    flex-shrink: 0;
-
-    @include for-mobile {
-      font-size: $text-lg;
-      line-height: 24px;
-    }
-  }
 
   &__loading,
   &__error,

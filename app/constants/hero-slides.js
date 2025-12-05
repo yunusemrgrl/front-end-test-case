@@ -5,7 +5,7 @@ export const HERO_SLIDES = [
     description:
       'Known as "the miracle plant", Aloe Vera helps to nourish, moisturize and keep the hair looking smooth. Let your hair be flexible and fresh.',
     buttonText: 'SHOP NOW',
-    image: '/images/right-part.png',
+    image: '/images/hero/right-part.png',
   },
   {
     subtitle: 'NATURALS BY WATSONS',
@@ -13,7 +13,7 @@ export const HERO_SLIDES = [
     description:
       'Known as "the miracle plant", Aloe Vera helps to nourish, moisturize and keep the hair looking smooth. Let your hair be flexible and fresh.',
     buttonText: 'SHOP NOW',
-    image: '/images/right-part.png',
+    image: '/images/hero/right-part.png',
   },
   {
     subtitle: 'NATURALS BY WATSONS',
@@ -21,7 +21,7 @@ export const HERO_SLIDES = [
     description:
       'Known as "the miracle plant", Aloe Vera helps to nourish, moisturize and keep the hair looking smooth. Let your hair be flexible and fresh.',
     buttonText: 'SHOP NOW',
-    image: '/images/right-part.png',
+    image: '/images/hero/right-part.png',
   },
 ];
 
