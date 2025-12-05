@@ -1,7 +1,3 @@
-/**
- * Input formatters ve validators için yardımcı fonksiyonlar
- */
-
 export const useInputFormatters = () => {
   const formatCardNumber = (value) => {
     if (!value) return '';

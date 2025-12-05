@@ -67,6 +67,7 @@ export default {
 <style lang="scss" scoped>
 
 .base-button {
+  width: max-content;
   display: inline-flex;
   align-items: center;
   justify-content: center;

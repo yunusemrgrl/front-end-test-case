@@ -44,6 +44,7 @@ import { computed } from 'vue';
 import { Button, Divider, Image } from '@/components/ui';
 import { EyeIcon, ShoppingCartIcon } from '@/components/icons';
 import { PRODUCT_CARD_TEXTS } from '@/constants/product-card';
+import { formatPrice } from '@/helpers/format-currency';
 
 const props = defineProps({
     product: {
@@ -54,10 +55,6 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
-    priceFormat: {
-        type: String,
-        default: 'TL',
-    },
 });
 
 const emit = defineEmits(['add-to-cart', 'quick-view']);
@@ -66,10 +63,7 @@ const imageUrl = computed(() => props.product.thumbnail || props.product.image);
 const title = computed(() => props.product.title);
 const price = computed(() => props.product.price);
 
-const formattedPrice = computed(() => {
-    const formattedValue = price.value.toFixed(2).replace('.', ',');
-    return `${formattedValue} ${props.priceFormat}`;
-});
+const formattedPrice = computed(() => formatPrice(price.value));
 
 const onAddToCart = () => {
     emit('add-to-cart', props.product);
