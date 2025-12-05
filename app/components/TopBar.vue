@@ -27,7 +27,7 @@
                     <div class="top-bar__profile desktop-only">
                         <p class="top-bar__profile-greeting">Hello,</p>
                         <p class="top-bar__profile-name">Clara Clara</p>
-                        <Avatar src="/images/profile.jpg" alt="user" :size="36" :border="2"
+                        <Avatar src="/images/hero/profile.jpg" alt="user" :size="36" :border="2"
                             border-color="var(--color-white)" />
                         <ChevronIcon class="top-bar__profile-chevron" rotate="down" :width="24" :height="24" />
                     </div>
