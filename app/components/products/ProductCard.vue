@@ -39,38 +39,60 @@
     </article>
 </template>
 
-<script setup>
+<script>
 import { computed } from 'vue';
 import { Button, Divider, Image } from '@/components/ui';
 import { EyeIcon, ShoppingCartIcon } from '@/components/icons';
 import { PRODUCT_CARD_TEXTS } from '@/constants/product-card';
 import { formatPrice } from '@/helpers/format-currency';
 
-const props = defineProps({
-    product: {
-        type: Object,
-        required: true,
+export default {
+    name: 'ProductCard',
+    components: {
+        Button,
+        Divider,
+        Image,
+        EyeIcon,
+        ShoppingCartIcon,
     },
-    showOverlay: {
-        type: Boolean,
-        default: true,
+    props: {
+        product: {
+            type: Object,
+            required: true,
+        },
+        showOverlay: {
+            type: Boolean,
+            default: true,
+        },
     },
-});
-
-const emit = defineEmits(['add-to-cart', 'quick-view']);
-
-const imageUrl = computed(() => props.product.thumbnail || props.product.image);
-const title = computed(() => props.product.title);
-const price = computed(() => props.product.price);
-
-const formattedPrice = computed(() => formatPrice(price.value));
-
-const onAddToCart = () => {
-    emit('add-to-cart', props.product);
-};
-
-const onQuickView = () => {
-    emit('quick-view', props.product);
+    emits: ['add-to-cart', 'quick-view'],
+    data() {
+        return {
+            PRODUCT_CARD_TEXTS,
+        };
+    },
+    computed: {
+        imageUrl() {
+            return this.product.thumbnail || this.product.image;
+        },
+        title() {
+            return this.product.title;
+        },
+        price() {
+            return this.product.price;
+        },
+        formattedPrice() {
+            return formatPrice(this.price);
+        },
+    },
+    methods: {
+        onAddToCart() {
+            this.$emit('add-to-cart', this.product);
+        },
+        onQuickView() {
+            this.$emit('quick-view', this.product);
+        },
+    },
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-  <section class="featured-catalog">
-    <div class="container">
+  <Section background="var(--color-snow)" custom-class="featured-catalog">
+    <Container>
       <SectionHeader :title="FEATURED_CATALOG_TEXTS.TITLE" />
 
       <div class="featured-catalog__grid">
@@ -10,19 +10,21 @@
           :category="category"
         />
       </div>
-    </div>
-  </section>
+    </Container>
+  </Section>
 </template>
 
 <script>
-import CategoryCard from './CategoryCard.vue';
-import { SectionHeader } from '@/components/ui';
+import CategoryCard from '@/components/featured-catalog/CategoryCard.vue';
+import { Container, Section, SectionHeader } from '@/components/ui';
 import { FEATURED_CATALOG_TEXTS, FEATURED_CATALOG_CATEGORIES } from '@/constants/featured-catalog';
 
 export default {
   name: 'FeaturedCatalogSection',
   components: {
     CategoryCard,
+    Container,
+    Section,
     SectionHeader,
   },
   data() {
@@ -36,10 +38,6 @@ export default {
 
 <style lang="scss" scoped>
 .featured-catalog {
-  width: 100%;
-  background: $color-snow;
-  padding-bottom: 40px;
-
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 360px);
@@ -51,16 +49,6 @@ export default {
       gap: 16px;
       justify-items: center;
     }
-  }
-}
-
-.container {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 140px;
-
-  @include for-mobile {
-    padding: 0 16px;
   }
 }
 </style>

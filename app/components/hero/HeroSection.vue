@@ -8,7 +8,7 @@
               <h6 class="slide-subtitle">{{ slide.subtitle }}</h6>
               <h2 class="slide-title">{{ slide.title }}</h2>
               <p class="slide-description">{{ slide.description }}</p>
-              <Button variant="primary" @click="handleShopNow">
+              <Button variant="primary" size="small" @click="handleShopNow">
                 {{ slide.buttonText }}
               </Button>
             </div>

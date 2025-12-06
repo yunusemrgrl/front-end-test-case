@@ -1,6 +1,6 @@
 <template>
-  <section class="featured-products">
-    <div class="container">
+  <Section background="var(--color-snow)" custom-class="featured-products">
+    <Container padding="0">
       <SectionHeader :title="title" />
 
       <div v-if="isLoading" class="featured-products__loading">
@@ -21,8 +21,8 @@
           :show-overlay="showOverlay" @add-to-cart="handleAddToCart"
           @quick-view="handleQuickView" />
       </div>
-    </div>
-  </section>
+    </Container>
+  </Section>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ import { useProducts } from '@/composables/useProducts';
 import { useCart } from '@/composables/use-cart';
 import ProductCard from './ProductCard.vue';
 import ProductCardSkeleton from './ProductCardSkeleton.vue';
-import { Button, SectionHeader } from '@/components/ui';
+import { Button, Container, Section, SectionHeader } from '@/components/ui';
 import { FEATURED_PRODUCTS_TEXTS } from '@/constants/featured-products';
 
 export default {
@@ -40,6 +40,8 @@ export default {
     ProductCard,
     ProductCardSkeleton,
     Button,
+    Container,
+    Section,
     SectionHeader,
   },
   props: {
@@ -129,10 +131,6 @@ export default {
 
 <style lang="scss" scoped>
 .featured-products {
-  width: 100%;
-  background: $color-snow;
-
-
   &__loading,
   &__error,
   &__empty {
@@ -177,16 +175,6 @@ export default {
   &__footer {
     display: flex;
     justify-content: center;
-  }
-}
-
-.container {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 140px;
-
-  @include for-mobile {
-    padding: 0 16px;
   }
 }
 </style>
