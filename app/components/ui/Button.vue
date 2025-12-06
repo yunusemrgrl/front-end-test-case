@@ -1,22 +1,22 @@
 <template>
   <button
     :class="[
-      'base-button',
-      `button-${variant}`,
-      `button-${size}`,
-      { 'button-disabled': isDisabled },
-      { 'button-full-width': fullWidth },
+      'button',
+      `button--${variant}`,
+      `button--${size}`,
+      { 'button--disabled': isDisabled },
+      { 'button--full-width': fullWidth },
     ]"
     :disabled="isDisabled"
     @click="handleClick"
   >
-    <span v-if="hasLeftIcon" class="button-icon left">
+    <span v-if="hasLeftIcon" class="button__icon button__icon--left">
       <slot name="left-icon" />
     </span>
-    <span class="button-text">
+    <span class="button__text">
       <slot />
     </span>
-    <span v-if="hasRightIcon" class="button-icon right">
+    <span v-if="hasRightIcon" class="button__icon button__icon--right">
       <slot name="right-icon" />
     </span>
   </button>
@@ -65,8 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.base-button {
+.button {
   width: max-content;
   display: inline-flex;
   align-items: center;
@@ -75,26 +74,49 @@ export default {
   border: none;
   border-radius: 4px;
   font-family: $ff-primary;
+  font-size: $text-base;
   font-weight: $fw-bold;
   cursor: pointer;
-  transition: all 0.3s ease;
   white-space: nowrap;
+  transition-duration: 60ms;
+  transition-timing-function: ease-in-out;
+  transition-property: background-color, transform;
 
-  &.button-small {
+  &--small {
     height: 32px;
     padding: 0 16px;
     font-size: $text-sm;
   }
 
-  &.button-large {
+  &--medium {
+    height: 48px;
+    padding: 0 16px;
+    font-size: $text-base;
+  }
+
+  &--large {
     height: 56px;
     padding: 0 32px;
     font-size: $text-lg;
   }
 
-  &.button-full-width {
+  &--full-width {
     width: 100%;
     display: flex;
+  }
+
+  &--disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:hover:not(.button--disabled) {
+    transform: scale(0.98);
+  }
+
+  &:active:not(.button--disabled) {
+    transform: scale(0.98);
   }
 
   &:focus-visible {
@@ -103,51 +125,50 @@ export default {
   }
 }
 
-.button-primary {
-  height: 32px;
+.button--primary {
   background: $color-primary;
   color: $color-white;
 
-  &:hover:not(.button-disabled) {
+  &:hover:not(.button--disabled) {
     background: $color-dark-primary;
   }
 
-  &:active:not(.button-disabled) {
+  &:active:not(.button--disabled) {
     background: $color-dark-primary;
   }
 }
 
-.button-secondary {
+.button--secondary {
   height: 32px;
   background: $color-secondary;
   color: $color-white;
 
-  &:hover:not(.button-disabled) {
+  &:hover:not(.button--disabled) {
     background: $color-dark-secondary;
   }
 
-  &:active:not(.button-disabled) {
+  &:active:not(.button--disabled) {
     background: $color-dark-secondary;
   }
 }
 
-.button-outline {
+.button--outline {
   height: 32px;
   background: transparent;
   color: $color-primary;
   border: 2px solid $color-primary;
   padding: 0 14px;
 
-  &:hover:not(.button-disabled) {
+  &:hover:not(.button--disabled) {
     background: $color-primary-10;
   }
 
-  &:active:not(.button-disabled) {
+  &:active:not(.button--disabled) {
     background: $color-primary-10;
   }
 }
 
-.button-product-card {
+.button--product-card {
   height: 24px !important;
   font-weight: $fw-medium;
   font-size: $text-sm !important;
@@ -160,27 +181,21 @@ export default {
   }
 }
 
-.button-disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.button-icon {
+.button__icon {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &.left {
+  &--left {
     margin-right: -4px;
   }
 
-  &.right {
+  &--right {
     margin-left: -4px;
   }
 }
 
-.button-text {
+.button__text {
   display: flex;
   align-items: center;
 }

@@ -9,7 +9,7 @@
         <form class="newsletter-signup__form" @submit.prevent="handleSubmit">
           <Input v-model="email" type="email" :placeholder="placeholder" :has-error="hasError" :is-disabled="isLoading"
             input-id="newsletter-email" aria-label="Email address for newsletter" class="newsletter-signup__input" />
-          <Button variant="primary" type="submit" class="newsletter-signup__button">
+          <Button variant="primary" size="medium" type="submit" class="newsletter-signup__button">
             {{ buttonText }}
           </Button>
         </form>
@@ -22,6 +22,7 @@
 import { ref, computed } from 'vue';
 import { Button, Input } from '@/components/ui';
 import { NEWSLETTER_TEXTS } from '@/constants/newsletter';
+import { validateEmail } from '@/utils/validate-email';
 
 export default {
   name: 'NewsletterSignUp',
@@ -62,9 +63,7 @@ export default {
     const isLoading = ref(false);
 
     const isEmailValid = computed(() => {
-      if (!email.value) return false;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email.value);
+      return validateEmail(email.value);
     });
 
     const handleSubmit = async () => {
@@ -172,9 +171,13 @@ export default {
     flex: 1;
   }
 
-  &__button {
-    height: 48px;
+  :deep(.button__text) {
     font-size: $text-sm;
+    padding-inline: 12.5px;
+
+    @include for-mobile {
+      padding-inline: 0;
+    }
   }
 }
 
