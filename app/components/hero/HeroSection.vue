@@ -193,6 +193,11 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 16px 16px 24px 16px;
+
+    :deep(.button) {
+      width: 100%;
+      display: flex;
+    }
   }
 }
 

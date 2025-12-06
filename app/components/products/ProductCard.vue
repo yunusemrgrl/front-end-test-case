@@ -29,7 +29,7 @@
         </div>
 
         <div class="product-card__footer mobile-only">
-            <Button variant="primary" :has-left-icon="true" @click="onAddToCart">
+            <Button variant="primary" size="small" :has-left-icon="true" @click="onAddToCart">
                 <template #left-icon>
                     <ShoppingCartIcon />
                 </template>
