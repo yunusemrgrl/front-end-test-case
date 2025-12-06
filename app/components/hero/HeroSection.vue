@@ -8,7 +8,7 @@
               <h6 class="slide-subtitle">{{ slide.subtitle }}</h6>
               <h2 class="slide-title">{{ slide.title }}</h2>
               <p class="slide-description">{{ slide.description }}</p>
-              <Button variant="primary" @click="handleShopNow">
+              <Button variant="primary" size="small" @click="handleShopNow">
                 {{ slide.buttonText }}
               </Button>
             </div>
@@ -193,6 +193,11 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 16px 16px 24px 16px;
+
+    :deep(.button) {
+      width: 100%;
+      display: flex;
+    }
   }
 }
 

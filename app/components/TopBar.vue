@@ -84,7 +84,7 @@ export default {
     },
     data() {
         return {
-            logo: '/images/logo.svg',
+            logo: '/logo.svg',
             isFocused: false,
             inputValue: '',
             showMobileMenu: false,

@@ -3,7 +3,7 @@
     <div class="category-card__content">
       <h3 class="category-card__title">{{ category.title }}</h3>
       <p class="category-card__description">{{ category.description }}</p>
-      <Button variant="secondary" @click="handleBrowse">
+      <Button variant="secondary" size="small" @click="handleBrowse">
         {{ FEATURED_CATALOG_TEXTS.BROWSE }}
       </Button>
     </div>
@@ -55,8 +55,10 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0px 1px 8px 0px #0000000A;
 
+  &:hover {
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.04);
+  }
 
   @include for-mobile {
     width: 343px;
@@ -71,7 +73,7 @@ export default {
     background-color: $color-white-90;
     text-align: center;
     padding: 16px;
-    gap: 0;
+    gap: 8px;
   }
 
   &__title {
@@ -79,14 +81,12 @@ export default {
     font-size: $text-xl;
     font-weight: $fw-bold;
     color: $color-coal;
-    margin: 0 0 16px 0;
     line-height: 24px;
 
     @include for-mobile {
       width: 231px;
       font-size: $text-lg;
       line-height: 24px;
-      margin-bottom: 12px;
     }
   }
 
@@ -95,7 +95,6 @@ export default {
     font-size: $text-sm;
     font-weight: $fw-regular;
     color: $color-graphene;
-    margin: 0 0 16px 0;
     line-height: 24px;
     vertical-align: middle;
 
@@ -103,7 +102,6 @@ export default {
       width: 231px;
       font-size: $text-xs;
       line-height: 24px;
-      margin-bottom: 12px;
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="section-header">
-    <Divider class="mobile-only" variant="medium" orientation="horizontal" color="var(--color-secondary-10)" />
+    <Divider variant="medium" orientation="horizontal" color="var(--color-secondary-10)" />
     <h2 class="section-header__title">{{ title }}</h2>
-    <Divider class="mobile-only" variant="medium" orientation="horizontal" color="var(--color-secondary-10)" />
+    <Divider variant="medium" orientation="horizontal" color="var(--color-secondary-10)" />
   </div>
 </template>
 
@@ -28,12 +28,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-block: 40px;
   gap: 32px;
-
-  @include for-mobile {
-    padding-block: 16px;
-  }
 
   &__title {
     font-size: $text-xl;
