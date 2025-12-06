@@ -170,6 +170,15 @@ export default {
   &__input {
     flex: 1;
   }
+
+  :deep(.button__text) {
+    font-size: $text-sm;
+    padding-inline: 12.5px;
+
+    @include for-mobile {
+      padding-inline: 0;
+    }
+  }
 }
 
 .container {
