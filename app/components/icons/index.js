@@ -15,3 +15,6 @@ export { default as HelpIconFilled } from './HelpIconFilled.vue';
 export { default as MinusIcon } from './MinusIcon.vue';
 export { default as PlusIcon } from './PlusIcon.vue';
 export { default as ShippingIcon } from './ShippingIcon.vue';
+export { default as StoreIcon } from './StoreIcon.vue';
+export { default as CatalogIcon } from './CatalogIcon.vue';
+export { default as PhoneIcon } from './PhoneIcon.vue';
