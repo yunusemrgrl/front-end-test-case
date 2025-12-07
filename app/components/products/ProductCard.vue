@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import { computed } from 'vue';
 import { Button, Divider, Image } from '@/components/ui';
 import { EyeIcon, ShoppingCartIcon } from '@/components/icons';
 import { PRODUCT_CARD_TEXTS } from '@/constants/product-card';
