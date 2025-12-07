@@ -1,15 +1,11 @@
 <template>
-  <button
-    :class="[
-      'button',
-      `button--${variant}`,
-      `button--${size}`,
-      { 'button--disabled': isDisabled },
-      { 'button--full-width': fullWidth },
-    ]"
-    :disabled="isDisabled"
-    @click="handleClick"
-  >
+  <button :class="[
+    'button',
+    `button--${variant}`,
+    `button--${size}`,
+    { 'button--disabled': isDisabled },
+    { 'button--full-width': fullWidth },
+  ]" :disabled="isDisabled" @click="handleClick">
     <span v-if="hasLeftIcon" class="button__icon button__icon--left">
       <slot name="left-icon" />
     </span>
@@ -174,6 +170,8 @@ export default {
   font-size: $text-sm !important;
   color: $color-white;
   background-color: transparent;
+  line-height: 24px;
+  vertical-align: middle;
   padding: 0 16px !important;
 
   &:hover {

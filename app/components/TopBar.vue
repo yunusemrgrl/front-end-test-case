@@ -1,7 +1,6 @@
 <template>
     <div class="top-bar">
         <div class="container">
-
             <div class="top-bar__middle">
                 <div class="top-bar__left">
                     <NuxtLink to="/">
@@ -37,17 +36,15 @@
                     <div class="top-bar__basket" @click="handleBasketClick">
                         <BasketIcon class="top-bar__basket-icon" :width="23" :height="18"
                             color="var(--color-graphene)" />
-                        <ShoppingIndicator v-if="cartItemsCount > 0" class="top-bar__basket-indicator" :size="16" color="var(--color-error)"
-                            :count="cartItemsCount" />
+                        <ShoppingIndicator v-if="cartItemsCount > 0" class="top-bar__basket-indicator" :size="16"
+                            color="var(--color-error)" :count="cartItemsCount" />
                     </div>
 
                     <HamburgerMenuIcon class="top-bar__hamburger-menu-icon mobile-only" :width="32" :height="32"
                         @click="showMobileMenu = true" />
                 </div>
             </div>
-
             <TopNav />
-
             <transition name="mobile-menu">
                 <MobileMenu v-if="showMobileMenu" @close="showMobileMenu = false" @select="onMobileSelect" />
             </transition>
@@ -63,6 +60,7 @@ import MobileMenu from '@/components/mobile-menu/MobileMenu.vue';
 import { useCart } from '@/composables/use-cart';
 
 export default {
+    name: 'TopBar',
     components: {
         BasketIcon,
         SearchIcon,
