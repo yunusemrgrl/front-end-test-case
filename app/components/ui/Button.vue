@@ -108,11 +108,9 @@ export default {
   }
 
   &:hover:not(.button--disabled) {
-    transform: scale(0.98);
   }
 
   &:active:not(.button--disabled) {
-    transform: scale(0.98);
   }
 
   &:focus-visible {
