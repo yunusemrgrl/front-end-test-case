@@ -37,9 +37,23 @@ export const FOOTER_SECTIONS = [
 
 export const CONTACT_INFO = {
     title: 'CONTACT US',
-    address: 'Saray Mah. Site Yolu Cad. Anel İş Merkezi, D:No:5/4, 34768 Ümraniye/Istanbul',
-    phone: '0850 755 9987',
-    email: 'info@watsons.com.tr',
+    items: [
+        {
+            label: 'Saray Mah. Site Yolu Cad. Anel İş Merkezi, D:No:5/4, 34768 Ümraniye/Istanbul',
+            href: 'https://www.google.com/maps/search/?api=1&query=Saray+Mah.+Site+Yolu+Cad.+Anel+İş+Merkezi,+D:No:5/4,+34768+Ümraniye/Istanbul',
+            type: 'address',
+        },
+        {
+            label: '0850 755 9987',
+            href: 'tel:08507559987',
+            type: 'phone',
+        },
+        {
+            label: 'info@watsons.com.tr',
+            href: 'mailto:info@watsons.com.tr',
+            type: 'email',
+        },
+    ],
 };
 
 export const SOCIAL_MEDIA = [

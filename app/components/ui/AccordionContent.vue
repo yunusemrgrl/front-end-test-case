@@ -1,7 +1,7 @@
 <template>
     <div
-        :id="`footer-section-${sectionId}`"
-        class="app-footer-section-content"
+        :id="`accordion-content-${sectionId}`"
+        class="accordion-content"
         :class="{ 'is-open': isOpen }"
     >
         <slot />
@@ -10,24 +10,32 @@
 
 <script>
 export default {
-    name: 'AppFooterSectionContent',
-    inject: ['footerSection'],
+    name: 'AccordionContent',
+    inject: ['accordion'],
     props: {
         sectionId: {
             type: [String, Number],
             required: true,
         },
+        defaultOpen: {
+            type: Boolean,
+            default: true,
+        },
+        alwaysOpenOnDesktop: {
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         isOpen() {
-            return this.footerSection ? this.footerSection.isOpen() : true;
+            return this.accordion ? this.accordion.isOpen() : this.defaultOpen;
         },
     },
 };
 </script>
 
 <style lang="scss" scoped>
-.app-footer-section-content {
+.accordion-content {
     @include for-desktop {
         display: block !important;
         max-height: none !important;
