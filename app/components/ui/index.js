@@ -9,3 +9,6 @@ export { default as Breadcrumbs } from './Breadcrumbs.vue';
 export { default as SectionHeader } from './SectionHeader.vue';
 export { default as Container } from './Container.vue';
 export { default as Section } from './Section.vue';
+export { default as Accordion } from './Accordion.vue';
+export { default as AccordionTitle } from './AccordionTitle.vue';
+export { default as AccordionContent } from './AccordionContent.vue';
